@@ -1,10 +1,23 @@
 prowjob_namespace: default
 pod_namespace: test-pods
-periodics:
-- interval: 20m
-  agent: kubernetes
-  name: echo-test-update
-  spec:
-    containers:
-    - image: alpine
-      command: ["/bin/date"]
+presubmits:
+  mcserverhosting-net/charts:
+  - name: helm-lint
+    decorate: true
+    always_run: true
+    skip_report: false
+    context: helm-lint
+    max_concurrency: 10
+    skip_submodules: true
+    clone_depth: 0
+    spec:
+      containers:
+      - name: helm
+        image: alpine/helm:3.1.2
+        command:
+        - "/bin/sh"
+        args:
+        - -c
+        - helm lint $ARTIFACTS/server-deployment
+    trigger: "(?m)lint( please)?" # Regexp, see discussion.
+    rerun_command: "lint"  # String, see discussion.
