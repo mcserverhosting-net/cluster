@@ -1,0 +1,13 @@
+plugins:
+  mcserverhosting-net/charts:
+  - size
+  mcserverhosting-net/cluster:
+  - size
+  - config-updater
+config_updater:
+  maps:
+    test-infra/prow/config.yaml:
+      name: config
+    # Update the plugin configmap whenever plugins.yaml changes
+    test-infra/prow/plugins.yaml:
+      name: plugin
