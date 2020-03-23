@@ -13,4 +13,4 @@ config_updater:
       name: config
     # Update the plugin configmap whenever plugins.yaml changes
     test-infra/prow/plugins.yaml:
-      name: plugin
+      name: plugins
