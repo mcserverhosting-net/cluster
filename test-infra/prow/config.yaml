@@ -17,10 +17,6 @@ presubmits:
     decorate: true
     always_run: true
     skip_report: false
-    context: helm-lint
-    max_concurrency: 10
-    skip_submodules: true
-    clone_depth: 0
     spec:
       containers:
       - name: helm
@@ -30,5 +26,3 @@ presubmits:
         args:
         - -c
         - helm lint $ARTIFACTS/server-deployment
-    trigger: "(?m)lint( please)?" # Regexp, see discussion.
-    rerun_command: "lint"  # String, see discussion.
