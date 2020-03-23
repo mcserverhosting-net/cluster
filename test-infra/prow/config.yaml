@@ -17,6 +17,7 @@ presubmits:
     decorate: true
     always_run: true
     skip_report: false
+    clone_depth: 0
     spec:
       containers:
       - name: helm
@@ -25,4 +26,4 @@ presubmits:
         - "/bin/sh"
         args:
         - -c
-        - helm lint $ARTIFACTS/server-deployment
+        - helm lint server-deployment
