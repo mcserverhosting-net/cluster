@@ -1,6 +1,9 @@
 plugins:
   mcserverhosting-net/charts:
   - size
+  - trigger
+  - retitle 
+  - lgtm
   mcserverhosting-net/cluster:
   - size
   - config-updater
