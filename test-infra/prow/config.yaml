@@ -14,7 +14,7 @@ plank:
 presubmits:
   mcserverhosting-net/charts:
   - name: helm-lint
-    decorate: false
+    decorate: true
     always_run: true
     skip_report: false
     context: helm-lint
