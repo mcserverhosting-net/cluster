@@ -13,7 +13,7 @@ plank:
     gcs_credentials_secret: gcs-credentials
 presubmits:
   mcserverhosting-net/charts:
-  - name: helm-lint
+  - name: lint-server-deployment
     decorate: true
     always_run: true
     skip_report: false
@@ -27,3 +27,17 @@ presubmits:
         args:
         - -c
         - helm lint server-deployment
+  - name: lint-ns-deployment
+    decorate: true
+    always_run: true
+    skip_report: false
+    clone_depth: 0
+    spec:
+      containers:
+      - name: helm
+        image: alpine/helm:3.1.2
+        command:
+        - "/bin/sh"
+        args:
+        - -c
+        - helm lint ns-deployment
